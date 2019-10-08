@@ -1,20 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            /* position: absolute; */
+            /* top: 50%;
+            left: 50%; */
+            /* height: 400px; */
+            width: 400px;
+            margin: 10px auto 0px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .wrapper input {
+            border: 5px;
+            height: 30px;
+            width: 180px;
+            padding: 2px;
+            margin-left: 10px;
+            outline: none;
+        }
+
+        .wrapper .searchInput,
+        .wrapper .typeBtn {
+           
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+        }
+
+        .wrapper .typeBtn {
+            color: #5cb85c;
+            display: inline-block;
+            height: 30px;
+            padding: 2px 6px;
+            /* width: 30px; */
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+            vertical-align: bottom;
+            cursor: pointer;
+        }
+
+        .wrapper .active {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+
+        .wrapper ul {
+
+            margin: 20px auto 10px;
+            /* height:330px; */
+            /* border:1px solid #cccc; */
+        }
+
+        .wrapper ul li {
+            margin: 0 auto;
+            border-bottom: 1px solid #cccc;
+            position: relative;
+            padding: 5px 0px 5px 50px;
+            width: 330px
+        }
+
+        .wrapper ul li .iconImg {
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            height: 40px;
+            border-bottom: 1px solid #cccc;
+            width: 40px;
+            /* margin-left:-45px;
+            margin-top:5px; */
+            /* margin:10px  0 0 10px; */
+
+        }
+
+        .wrapper ul li .nameP {
+            font-size: 16px;
+            /* color:#ccc; */
+            font-family: Arial, Helvetica, sans-serif;
+            /* margin-top:10px; */
+            position: relative;
+            top: 3px;
+        }
+
+        .wrapper ul li .descP {
+            font-size: 10px;
+            color: #ccc;
+            margin-top: 13px;
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <input class="searchInput" type="text">
+        <span class="typeBtn" sex="m">Male</span>
+        <span class="typeBtn" sex="f">Female</span>
+        <span class="typeBtn active " sex="a">All</span>
+        <ul class="list">
+            <li>
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822735&di=1216b47344641573eaf5cd9adfab9f50&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F26%2F20141026191422_yEKyd.thumb.700_0.jpeg"
+                    alt="" class="iconImg">
+                <p class="nameP">hhda</p>
+                <p class="descP">米少数</p>
+            </li>
+            <li>
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822735&di=1216b47344641573eaf5cd9adfab9f50&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F26%2F20141026191422_yEKyd.thumb.700_0.jpeg"
+                    alt="" class="iconImg">
+                <p class="nameP">hhda</p>
+                <p class="descP">米少数</p>
+            </li>
+        </ul>
 
+    </div>
     <script>
-        //数据可视化
 
+
+        var personArr = [
+            { name: '王岗', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822735&di=1216b47344641573eaf5cd9adfab9f50&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F26%2F20141026191422_yEKyd.thumb.700_0.jpeg', des: '脊椎不好', sex: 'm' },
+            { name: '柳荫', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822734&di=bc354ea6f5c67fb120b75a76aa8de82a&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201901%2F15%2F20190115181136_ZLMrV.thumb.700_0.jpeg', des: '我是谁', sex: 'f' },
+            { name: '王秀莹', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822730&di=8a040a5db65943b7a80b3780d9f9798f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201606%2F07%2F20160607191023_isxzV.jpeg', des: '我很好看', sex: 'f' },
+            { name: '刘飞翔', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570507822722&di=2c5a48311c9d37157b6a65c4e739ceb9&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201509%2F19%2F20150919143903_UcJyE.jpeg', des: '你没见过', sex: 'm' },
+            { name: '刘一', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570509786359&di=bc9f2afdc05acf4384f426518f47eb33&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fq_70%2Cc_zoom%2Cw_640%2Fimages%2F20190207%2Ffae874c24644427eaf1b0e21b0ac8dd7.jpeg', des: '官皮', sex: 'm' },
+        ]
+
+
+        var filterText = '';
+        var filterSex = 'a';
+
+        readerData(personArr)
+
+        var btnArr = document.getElementsByClassName('typeBtn');
+
+        for (var i = 0; i < btnArr.length; i++) {
+
+            (function (i) {
+                btnArr[i].onclick = function () {
+                    for (var x = 0; x < btnArr.length; x++) {
+                        btnArr[x].className = "typeBtn";
+                    }
+                    btnArr[i].className = 'typeBtn active';
+                    filterSex = this.getAttribute('sex');
+                   readerData( filterData(filterDataBySex(personArr,filterSex) ,filterText));
+                }
+            }(i))
+
+        }
+
+
+        var input = document.getElementsByClassName('searchInput')[0];
+        input.oninput = function(){
+            filterText = this.value;
+           readerData(filterDataBySex(filterData(personArr ,this.value) ,filterSex));
+        }
+
+        function readerData(data) {
+            var ul = document.getElementsByClassName('list')[0];
+                var innerHTML = '';
+                ul.innerHTML ='';
+            if (data && data.length) {
+               
+                data.forEach(function (node, index, self) {
+                    innerHTML += ` 
+                    <li>
+                    <img src="`+ node.src + `" alt="" class="iconImg">
+                    <p class="nameP">`+ node.name + `</p>  
+                    <p class="descP">`+ node.des + `</p>
+                    </li>`
+                });
+                ul.innerHTML = innerHTML;
+            }
+
+
+
+
+
+
+        }
+
+        function filterData(data ,text){
+             if(!data){
+                 return data;
+             }else{
+                return data.filter(function(node,index,self){
+                        return    node.name .indexOf(text)>-1
+                })
+             }
+        }
         
+        function filterDataBySex(data,sex){
+            if(sex == 'a'){
+                return data;
+            }else{
+                return data.filter(function(node,index,self){
+                    return node.sex == sex;
+                })
+            }
+        }
 
-    
+
+      
+
+     
+
     </script>
 </body>
-</html> 
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 600px
+        }
+
+        span {
+            width: 100px;
+            background-color: black;
+            position: absolute;
+            top: 400px;
+            border: 0.5px solid black
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var personArr = [
+            { name: '王岗', src: '.src/img/1.png', des: '脊椎不好', sex: 'm' },
+            { name: '柳荫', src: '.src/img/2.png', des: '我是谁', sex: 'f' },
+            { name: '王秀莹', src: '.src/img/3.png', des: '我很好看', sex: 'f' },
+            { name: '刘飞翔', src: '.src/img/4.png', des: '你没见过', sex: 'm' },
+            { name: '刘一', src: '.src/img/4.png', des: '官皮', sex: 'm' },
+        ]
+
+        // Array.prototype.myForEach = function(func){
+        //     var _arr = this,len= _arr.length,pram2= arguments[1]||window;
+        //     for(var i = 0;i<len;i++){
+        //         func.apply(pram2,[_arr[i],i,_arr])
+        //     }
+        // }
+        // personArr.myForEach(function(ele,index,self){
+        //     console.log(ele,index,self,this[index]);
+        //     this[index].innerHTML = ele.name;
+        // },document.getElementsByTagName('li'));
+
+        //filter
+        //     Array.prototype.myFilter = function(func){
+        //         var _arr = this,len= _arr.length,pram2= arguments[1]||window;
+        //         var newArr =[];
+        //         for(var i = 0;i<len;i++){
+        //            func.apply(pram2,[_arr[i],i,_arr])?newArr.push(_arr[i]):'';
+        //         }
+        //         return newArr;
+        //     }
+
+        //   var res =  personArr.myFilter(function(ele,index,self){
+        //         console.log(ele,index,self,this[index]);
+        //       if(ele.sex == 'f'){
+        //         this[index].innerHTML = ele.name;
+        //         return true;
+        //       }
+        //     },document.getElementsByTagName('li'));
+
+
+        //map
+        // var res = personArr.map(function (ele, index, self) {
+        //     console.log(ele, index, self, this[index]);
+        //     return { name: ele.name + 10 ,sex : ele.sex ,lastName :this.lastName };
+        // }, {lastName: 'quan'});
+
+
+        // Array.prototype.myMap = function(func){
+        //         var _arr = this,len= _arr.length,pram2= arguments[1]||window;
+        //         var newArr =[];
+        //         for(var i = 0;i<len;i++){
+        //             newArr.push(func.apply(pram2,[_arr[i],i,_arr]))  ;
+        //         }
+        //         return newArr;
+        //     }
+
+
+        // Array.prototype.myEvery = function (func) {
+        //     var _arr = this, len = _arr.length, pram2 = arguments[1] || window;
+        //     var res = true;
+        //     for (var i = 0; i < len; i++) {
+        //         if (!func.apply(pram2, [_arr[i], i, _arr])) {
+        //             res = false
+        //             break;
+        //         }
+        //     }
+        //     return res;
+        // }
+
+        //every
+        // var res = personArr.every(function (ele, index, self) {
+        //     console.log(ele, index, self, this[index]);
+        //     if (ele.sex == 'f') {
+        //         return true;
+        //     }
+        // }, { lastName: 'quan' });
+        // console.log(res);
+
+
+            //  Array.prototype.mySome = function(func){
+            //     var _arr = this,len= _arr.length,pram2= arguments[1]||window;
+            //    var res = false;
+            //     for(var i = 0;i<len;i++){
+            //       if(func.apply(pram2,[_arr[i],i,_arr])){
+            //         res =true
+             //           break;
+            //       }  
+            //     }
+            //     return res;
+            // }
+
+
+        //some
+        // var res = personArr.mySome(function (ele, index, self) {
+        //     console.log(ele, index, self, this[index]);
+        //     if (ele.sex == 'f') {
+        //         return true;
+        //     }
+        // }, { lastName: 'quan' });
+        // console.log(res);
+
+
+        // Array.prototype.myReduce = function(func){
+        //     var _arr= this, len = this.length,pram2 = arguments[1];
+        //     for(var i = 0 ;i<len;i++){
+        //         pram2 = func(pram2,_arr[i],i,_arr)
+        //     }
+        //     return pram2;
+        //  }    
+
+       var initData = {name:'qal'};
+       var thisData = {name:'hhh'} 
+       var res =   personArr .reduce(function(prevValue,curValue,index,self){
+
+
+            console.log(prevValue,curValue,index,self,this)
+            return prevValue;
+
+         },initData,thisData)   
+
+
+       
+
+
+
+
+    </script>
+</body>
+
+</html>
