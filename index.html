@@ -126,8 +126,8 @@
                 <p class="descP">米少数</p>
             </li>
         </ul>
-
     </div>
+
     <script>
 
 
@@ -141,7 +141,7 @@
 
 
 
-       
+
 
 
         readerData(personArr)
@@ -156,8 +156,8 @@
                         btnArr[x].className = "typeBtn";
                     }
                     btnArr[i].className = 'typeBtn active';
-                    state.sex = this.getAttribute('sex');
-                    readerData(lastFilterArr(personArr));
+                    var action = {type : 'sex',value : this.getAttribute('sex')}
+                    store.dispatch(action)
                 }
             }(i))
 
@@ -166,8 +166,8 @@
 
         var input = document.getElementsByClassName('searchInput')[0];
         input.oninput = function () {
-            state.text = this.value;
-            readerData(lastFilterArr(personArr));
+            var action = {type : 'text',value : this.value}
+            store.dispatch(action)
         }
 
         function readerData(data) {
@@ -214,26 +214,61 @@
             }
         }
 
-        var state = {
-            text: '',
-            sex: 'a',
-        }
         //过滤
         function combineFilter(config) {
             return function (data) {
                 for (var i in config) {
-                    data = config[i](data, state[i])
+                    data = config[i](data, store.getState(i))
                 }
                 return data;
             }
         }
 
-
+        //过滤函数
         var lastFilterArr = combineFilter({
             text: filterByText,
             sex: filterBySex
         })
 
+        //事件监听
+        function createStore(initialState) {
+            var state = initialState || {};
+            var list = [];
+            function getState(type) {
+                return state[type];
+            };
+
+            function dispatch(action ){
+                state[action.type] = action.value;
+                list.forEach(f => {
+                    f()
+                });
+            }
+
+            function subscribe(func){
+                list.push(func);
+            }
+
+            return {
+                getState : getState,
+                dispatch : dispatch,
+                subscribe : subscribe
+            }
+        }
+
+        //创建监听
+        var store = createStore({
+            text:'',
+            sex:'a'
+        });
+
+        //事件订阅
+        store.subscribe(function(){
+            readerData(lastFilterArr(personArr));
+        })
+
+
+        
 
 
     </script>
