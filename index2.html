@@ -35,7 +35,7 @@
 
         .wrapper .searchInput,
         .wrapper .typeBtn {
-
+           
             margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -140,9 +140,8 @@
         ]
 
 
-
-       
-
+        var filterText = '';
+        var filterSex = 'a';
 
         readerData(personArr)
 
@@ -156,8 +155,8 @@
                         btnArr[x].className = "typeBtn";
                     }
                     btnArr[i].className = 'typeBtn active';
-                    state.sex = this.getAttribute('sex');
-                    readerData(lastFilterArr(personArr));
+                    filterSex = this.getAttribute('sex');
+                   readerData( filterData(filterDataBySex(personArr,filterSex) ,filterText));
                 }
             }(i))
 
@@ -165,17 +164,17 @@
 
 
         var input = document.getElementsByClassName('searchInput')[0];
-        input.oninput = function () {
-            state.text = this.value;
-            readerData(lastFilterArr(personArr));
+        input.oninput = function(){
+            filterText = this.value;
+           readerData(filterDataBySex(filterData(personArr ,this.value) ,filterSex));
         }
 
         function readerData(data) {
             var ul = document.getElementsByClassName('list')[0];
-            var innerHTML = '';
-            ul.innerHTML = '';
+                var innerHTML = '';
+                ul.innerHTML ='';
             if (data && data.length) {
-
+               
                 data.forEach(function (node, index, self) {
                     innerHTML += ` 
                     <li>
@@ -194,47 +193,30 @@
 
         }
 
-        function filterByText(data, text) {
-            if (!data) {
-                return data;
-            } else {
-                return data.filter(function (node, index, self) {
-                    return node.name.indexOf(text) > -1
+        function filterData(data ,text){
+             if(!data){
+                 return data;
+             }else{
+                return data.filter(function(node,index,self){
+                        return    node.name .indexOf(text)>-1
                 })
-            }
+             }
         }
-
-        function filterBySex(data, sex) {
-            if (sex == 'a') {
+        
+        function filterDataBySex(data,sex){
+            if(sex == 'a'){
                 return data;
-            } else {
-                return data.filter(function (node, index, self) {
+            }else{
+                return data.filter(function(node,index,self){
                     return node.sex == sex;
                 })
             }
         }
 
-        var state = {
-            text: '',
-            sex: 'a',
-        }
-        //过滤
-        function combineFilter(config) {
-            return function (data) {
-                for (var i in config) {
-                    data = config[i](data, state[i])
-                }
-                return data;
-            }
-        }
 
+      
 
-        var lastFilterArr = combineFilter({
-            text: filterByText,
-            sex: filterBySex
-        })
-
-
+     
 
     </script>
 </body>
