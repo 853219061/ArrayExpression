@@ -156,7 +156,7 @@
                         btnArr[x].className = "typeBtn";
                     }
                     btnArr[i].className = 'typeBtn active';
-                    var action = {type : 'sex',value : this.getAttribute('sex')}
+                    var action = { type: 'sex', value: this.getAttribute('sex') }
                     store.dispatch(action)
                 }
             }(i))
@@ -166,9 +166,9 @@
 
         var input = document.getElementsByClassName('searchInput')[0];
         input.oninput = function () {
-            var action = {type : 'text',value : this.value}
-            debounce (function(){ store.dispatch(action)},1500)()
-           
+            var action = { type: 'text', value: this.value }
+            debounce(function () { store.dispatch(action) }, 1500)()
+
         }
 
         function readerData(data) {
@@ -239,49 +239,49 @@
                 return state[type];
             };
 
-            function dispatch(action ){
+            function dispatch(action) {
                 state[action.type] = action.value;
                 list.forEach(f => {
                     f()
                 });
             }
 
-            function subscribe(func){
+            function subscribe(func) {
                 list.push(func);
             }
 
             return {
-                getState : getState,
-                dispatch : dispatch,
-                subscribe : subscribe
+                getState: getState,
+                dispatch: dispatch,
+                subscribe: subscribe
             }
         }
 
         //创建监听
         var store = createStore({
-            text:'',
-            sex:'a'
+            text: '',
+            sex: 'a'
         });
-
+        
         //事件订阅
-        store.subscribe(function(){
+        store.subscribe(function () {
             readerData(lastFilterArr(personArr));
         })
 
-        
 
-// 要防抖的函数  hander  :function
-// 防抖的时间    delay   :ms
-function debounce (hander,delay){
-    var timer = null ;
-    return function (e){
-        var _self = this,_arg=arguments;
-        clearTimeout(timer);
-        timer = setTimeout(function(){
-            hander.apply(_self,_arg);
-        },delay)
-    }
-}
+
+        // 要防抖的函数  hander  :function
+        // 防抖的时间    delay   :ms
+        function debounce(hander, delay) {
+            var timer = null;
+            return function (e) {
+                var _self = this, _arg = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    hander.apply(_self, _arg);
+                }, delay)
+            }
+        }
 
     </script>
 </body>
