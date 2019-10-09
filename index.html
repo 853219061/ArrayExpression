@@ -167,7 +167,8 @@
         var input = document.getElementsByClassName('searchInput')[0];
         input.oninput = function () {
             var action = {type : 'text',value : this.value}
-            store.dispatch(action)
+            debounce (function(){ store.dispatch(action)},1500)()
+           
         }
 
         function readerData(data) {
@@ -267,9 +268,20 @@
             readerData(lastFilterArr(personArr));
         })
 
-
         
 
+// 要防抖的函数  hander  :function
+// 防抖的时间    delay   :ms
+function debounce (hander,delay){
+    var timer = null ;
+    return function (e){
+        var _self = this,_arg=arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            hander.apply(_self,_arg);
+        },delay)
+    }
+}
 
     </script>
 </body>
